@@ -1,0 +1,15 @@
+C:\Users\rbnsi\Documents\School\Fundamentos_programacion\Ev2\bin\Debug\netcoreapp6.0\main.exe
+C:\Users\rbnsi\Documents\School\Fundamentos_programacion\Ev2\bin\Debug\netcoreapp6.0\main.deps.json
+C:\Users\rbnsi\Documents\School\Fundamentos_programacion\Ev2\bin\Debug\netcoreapp6.0\main.runtimeconfig.json
+C:\Users\rbnsi\Documents\School\Fundamentos_programacion\Ev2\bin\Debug\netcoreapp6.0\main.dll
+C:\Users\rbnsi\Documents\School\Fundamentos_programacion\Ev2\bin\Debug\netcoreapp6.0\main.pdb
+C:\Users\rbnsi\Documents\School\Fundamentos_programacion\Ev2\obj\Debug\netcoreapp6.0\main.csproj.AssemblyReference.cache
+C:\Users\rbnsi\Documents\School\Fundamentos_programacion\Ev2\obj\Debug\netcoreapp6.0\main.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\rbnsi\Documents\School\Fundamentos_programacion\Ev2\obj\Debug\netcoreapp6.0\main.AssemblyInfoInputs.cache
+C:\Users\rbnsi\Documents\School\Fundamentos_programacion\Ev2\obj\Debug\netcoreapp6.0\main.AssemblyInfo.cs
+C:\Users\rbnsi\Documents\School\Fundamentos_programacion\Ev2\obj\Debug\netcoreapp6.0\main.csproj.CoreCompileInputs.cache
+C:\Users\rbnsi\Documents\School\Fundamentos_programacion\Ev2\obj\Debug\netcoreapp6.0\main.dll
+C:\Users\rbnsi\Documents\School\Fundamentos_programacion\Ev2\obj\Debug\netcoreapp6.0\refint\main.dll
+C:\Users\rbnsi\Documents\School\Fundamentos_programacion\Ev2\obj\Debug\netcoreapp6.0\main.pdb
+C:\Users\rbnsi\Documents\School\Fundamentos_programacion\Ev2\obj\Debug\netcoreapp6.0\main.genruntimeconfig.cache
+C:\Users\rbnsi\Documents\School\Fundamentos_programacion\Ev2\obj\Debug\netcoreapp6.0\ref\main.dll
