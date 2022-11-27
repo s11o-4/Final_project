@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ZaHrmo5HsPmxVZKbADZBPyGblRAIqKTQ/zvnGPJ/tS4DMOoxt7uVqfUPWwaH7/xOLu3mztJG4Q7eMpqimsgOFg==",
+  "dgSpecHash": "ydY2yS8Na44BLvucA7x1EMk6Q6nihKTYBq+x7recTfOBoG7tzVtEzKO0cEYDgkr1A8o1BHeNz5cGcY7YyaQvlA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\rbnsi\\Documents\\School\\Fundamentos_programacion\\Ev2\\main.csproj",
+  "projectFilePath": "C:\\Users\\rbnsi\\Documents\\School\\Fundamentos_programacion\\Ev3\\main.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\rbnsi\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.11\\microsoft.netcore.app.ref.6.0.11.nupkg.sha512",
     "C:\\Users\\rbnsi\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.11\\microsoft.windowsdesktop.app.ref.6.0.11.nupkg.sha512",

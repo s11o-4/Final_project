@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\rbnsi\\Documents\\School\\Fundamentos_programacion\\Ev2\\main.csproj",
+      "projectUniqueName": "C:\\Users\\rbnsi\\Documents\\School\\Fundamentos_programacion\\Ev3\\main.csproj",
       "projectName": "main",
-      "projectPath": "C:\\Users\\rbnsi\\Documents\\School\\Fundamentos_programacion\\Ev2\\main.csproj",
+      "projectPath": "C:\\Users\\rbnsi\\Documents\\School\\Fundamentos_programacion\\Ev3\\main.csproj",
       "packagesPath": "C:\\Users\\rbnsi\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\rbnsi\\Documents\\School\\Fundamentos_programacion\\Ev2\\obj\\",
+      "outputPath": "C:\\Users\\rbnsi\\Documents\\School\\Fundamentos_programacion\\Ev3\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

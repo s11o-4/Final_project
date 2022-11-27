@@ -1,0 +1,48 @@
+4242424242424240
+nombre
+Juan Montes
+cvc
+584
+pin
+1247
+fecha_vencimiento
+04/09/2023
+saldo_disp
+52700
+end
+4000056655665550
+nombre
+Pedro Zapata
+cvc
+875
+pin
+8642
+fecha_vencimiento
+04/06/2020
+saldo_disp
+64032
+end
+5555555555554440
+nombre
+Ana Martínez
+cvc
+950
+pin
+9545
+fecha_vencimiento
+21/08/2024
+saldo_disp
+8328
+end
+2223003122002320
+nombre
+Rogelio Guerra
+cvc
+210
+pin
+3089
+fecha_vencimiento
+13/01/2023
+saldo_disp
+10967
+end

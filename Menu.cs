@@ -1,15 +1,18 @@
 using System;
 using Cards;
+using Verify;
 using DateComprobation;
 
 namespace Options
 {
     public class Menu
     {
-        long[] card_number = { 4242424242424240, 4000056655665550, 5555555555554440, 2223003122003220 };
+        DatabaseManager instance = new DatabaseManager();
         int option;
-        double moneyr;
-        long numt;
+        int actual_money = 0;
+
+        //numero de tarjeta
+        string cardNumber;
         bool flag = false;
         public void Options()
         {
@@ -18,63 +21,86 @@ namespace Options
 
             while (!flag)
             {
-                bool verification = false;
-                Console.WriteLine("1) Consultar saldo \n" +
-                               "2) Depósito \n" +
-                               "3) Retirar efectivo \n" +
-                               "4) Transferencia \n" +
-                               "5) Salir \n");
-                option = Int32.Parse(Console.ReadLine());
+                while(true)
+                {
+                    // bool verification = false;
+                    Console.WriteLine("1) Consultar saldo \n" +
+                                "2) Depósito \n" +
+                                "3) Retirar efectivo \n" +
+                                "4) Transferencia \n" +
+                                "5) Salir \n");
+              
+                    try
+                    {
+                        option = Int32.Parse(Console.ReadLine());
+                        break;
+                    }
+                    catch(Exception)
+                    {
+                        Console.WriteLine("Por favor introduce solo numeros: \n");
+                    }
+                }
                 switch (option)
                 {
                     case 1:
                         // Consultar saldo
                         Console.WriteLine("Querid@ " +
                         InicioDeSesion.name + "\n");
-                        Console.WriteLine("Su saldo es de:" +
-                        InicioDeSesion.money);
+                        Console.WriteLine("Tu saldo es de:" +
+                        instance.GetData(InicioDeSesion.cardNumber,"saldo_disp"));
                         Console.WriteLine("Su tarjeta vence el: " +
-                        InicioDeSesion.date + "\n");
+                        InicioDeSesion.date.Day + "/" + InicioDeSesion.date.Month + 
+                        "/" + InicioDeSesion.date.Year + "\n");
                         break;
                     case 2:
                         // Deposito
                         Console.WriteLine("Ingrese el número de la " +
                         "tarjeta a donde desea depositar el dinero.");
-                        numt = Int64.Parse(Console.ReadLine());
-                        foreach (long element in card_number)
-                        {
-                            if (element == numt)
-                            {
-                                verification = true;
-                            }
-                        }
-                        if (verification)
+                        cardNumber = Console.ReadLine();
+                        if (instance.GetData(cardNumber, cardNumber) != null)
                         {
                             Console.WriteLine("¿Cuánto dinero " +
                             "desea depositar? ");
-                            double local_money =
-                            double.Parse(Console.ReadLine());
-
-                            Console.WriteLine("Depósito realizado " + "con éxito \n");
+                            int mon_dep;
+                            try
+                            {
+                                mon_dep = Int32.Parse(Console.ReadLine());
+                            }
+                            catch (System.Exception)
+                            {
+                                Console.WriteLine("La cantidad máxima permitida es de 1,000,000." + "\nDeposito no realizado \n");   
+                                continue;                                
+                            }
+                            if(mon_dep > 1000000)
+                            {
+                                Console.WriteLine("La cantidad máxima permitida es de 1,000,000." + "\nDeposito no realizado \n");   
+                            }
+                            else
+                            {
+                                //Obtengo el dinero con el que cuenta la persona en el momento actual
+                                actual_money = Int32.Parse(instance.GetData(cardNumber, "saldo_disp"));
+                                //Dinero final que tendrá
+                                mon_dep = mon_dep + actual_money;
+                                instance.ModDatabase(cardNumber, mon_dep.ToString());
+                                Console.WriteLine("Deposito realizado con éxito! \n");
+                            }
                         }
                         else
                         {
-                            Console.WriteLine("Error, el usuario no existe \n");
+                            Console.WriteLine("Error, el numero de tarjeta es incorrecto \n");
                         }
-
                         break;
+
                     case 3:
                         // Retirar efectivo
-
-                        Console.WriteLine("¿Cuánto dinero desea " +
-                                          "retirar?:");
-                        moneyr = double.Parse(Console.ReadLine());
-                        if (moneyr < InicioDeSesion.money)
+                        Console.WriteLine("¿Cuánto dinero desea retirar?: ");
+                        int money_withdraw = Int32.Parse((Console.ReadLine()));
+                        actual_money = Int32.Parse(instance.GetData(InicioDeSesion.cardNumber, "saldo_disp"));
+                        if (money_withdraw <= actual_money)
                         {
-                            InicioDeSesion.money =
-                            InicioDeSesion.money - moneyr;
-                            Console.WriteLine("Su retiro se " +
-                                              "realizo con exito");
+                            int final_money = actual_money - money_withdraw;
+                            instance.ModDatabase(InicioDeSesion.cardNumber, final_money.ToString());
+                            Console.WriteLine("Su retiro se realizo con exito \n");
                         }
                         else
                         {
@@ -85,45 +111,35 @@ namespace Options
                         break;
                     case 4:
                         //Transferir
-                        Console.WriteLine("Ingrese el número de la " +
-                        "tarjeta a donde desea transferir el "
-                        + " dinero.");
-                        numt = Int64.Parse(Console.ReadLine());
-                        foreach (long element in card_number)
+                        Console.WriteLine("Ingrese el número de la tarjeta a la que desea transferir ");
+                        cardNumber = Console.ReadLine();
+                        if(instance.GetData(cardNumber, cardNumber) != null)
                         {
-                            if (element == numt)
+                            Console.WriteLine("¿Cuánto dinero desea transferir?: \n");
+                            int money_transfer = Int32.Parse((Console.ReadLine()));
+                            actual_money = Int32.Parse(instance.GetData(InicioDeSesion.cardNumber, "saldo_disp"));
+                            if(money_transfer <= actual_money)
                             {
-                                verification = true;
-                            }
-                        }
-                        if (verification)
-                        {
-                            Console.WriteLine("¿Cuanto dinero desea " +
-                         "transferir?:");
-                            moneyr = double.Parse(Console.ReadLine());
-                            if (moneyr <= InicioDeSesion.money)
-                            {
-                                InicioDeSesion.money =
-                                InicioDeSesion.money - moneyr;
-                                Console.WriteLine("Su deposito se " +
-                                                  " realizo con exito \n");
-                            }
-                            else
-                            {
-                                Console.WriteLine("No posee los " +
-                                                  "fondos suficientes \n");
-                                continue;
+                                int tran_actual_money = Int32.Parse(instance.GetData(cardNumber, "saldo_disp"));
+                                //Cantidad de dinero que tendrá la persona a quien se le haga la transferencia
+                                int final_money_transfer = tran_actual_money + money_transfer;
+                                //Cantidad de dinero restante de la persona que hace la transferencia
+                                int remaining_money = actual_money - money_transfer;
+                                instance.ModDatabase(InicioDeSesion.cardNumber, remaining_money.ToString());
+                                instance.ModDatabase(cardNumber, final_money_transfer.ToString());
+                                Console.WriteLine("Transferencia realizada con éxito \n");
                             }
                         }
                         else
                         {
-                            Console.WriteLine("Error, el usuario no existe \n");
+                            Console.WriteLine("Error, ingrese el numero de tarjeta correctamente \n");
                         }
                         break;
                     case 5:
                         //Salir
                         Console.Write("Gracias por usar nuestros " +
                                       "servicios, hasta pronto \n");
+                        Message();
                         flag = true;
                         break;
                     default:
@@ -132,6 +148,52 @@ namespace Options
                         break;
                 }
             }
+        }
+
+        public void Message()
+        {
+            Console.WriteLine(
+                @"
+                
+
+                                  \\\\\\\////
+                             \\//\/\\\\\\\///
+                           \\\`      \\\\\\///
+                          \\       ||\      \
+                          \  \\   //     _\  `\
+                         /  /. \  \\    /O.    `\,
+                        //  |__\\ //\         . __\
+                      /`           //\\      , .\ /
+                     \\\\          //\        ___|
+                    ////\\            \\     `   \
+                  //////////\\\\       //__       |
+                 |`  \\\//////\\        \_ \______|
+                 |     \\\\//\\/////\\\   \
+                ./      \\\\////////\\     |\
+                |        \\\\////\\//\\\\\\\\
+                |          \\\///      \\\\\\
+                |          \\\//         \//
+                |            \/        \ |
+                |             `         \|
+                | |                      \                       /
+                | |           \           \                     //
+                | |                        \                   ////
+                | |             .          `|                 /////
+                | |                         `\                \\////
+                 \`|                          `|              \\||/
+                  | |             \            `|  ,--.         \ \,
+                  |  \                          |./    `\        | |
+                   |  |                                 |        | |
+                   |___|            .                   |        | |
+                   /   |                                |        | |
+                   |    |                               ;        | |
+                   |                                    |        | |
+                 __|                                   /`       /` ;
+                /   \                          ,      ; \     ,` ,/
+                \____\              \       \,/__________|__.' ,`
+                      \______________\_______________________.'
+                "
+            );
         }
     }
 }
