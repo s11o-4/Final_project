@@ -8,7 +8,7 @@ pin
 fecha_vencimiento
 04/09/2023
 saldo_disp
-52700
+52800
 end
 4000056655665550
 nombre
