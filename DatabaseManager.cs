@@ -5,7 +5,8 @@ namespace Verify
 {
     public class DatabaseManager
     {
-        string path = "..\\Ev3\\database.txt";
+        // string path = "..\\Ev3\\database.txt";
+        string path = "C:\\Users\\rbnsi\\Downloads\\Final_project\\Final_project-main\\database.txt";
 
         //Data search no es el dato es el nombre del dato que quiero obtener
         public string GetData(string card_number, string data_search)
